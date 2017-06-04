@@ -13,7 +13,9 @@ Plugin that converts CTFd file uploads and deletions to Amazon S3 calls
 
 `SECRET_ACCESS_KEY` is your AWS Secret Key. If you do not provide this, the plugin will try to use an IAM role or credentials file.
 
-`BUCKET` is the name of your Amazon S3 bucket. 
+`BUCKET` is the name of your Amazon S3 bucket.
+
+(optional) `S3_ENDPOINT_URL` is the URL for the custom S3 instance
 
 ## Note
 

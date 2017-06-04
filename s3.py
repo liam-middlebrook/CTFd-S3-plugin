@@ -17,16 +17,18 @@ def clean_filename(c):
 def get_s3_conn(app):
     access_key_id = utils.get_config('ACCESS_KEY_ID')
     secret_access_key = utils.get_config('SECRET_ACCESS_KEY')
+    endpoint_url = utils.get_config('S3_ENDPOINT_URL') or None # default to None
     if access_key_id and secret_access_key:
         client = boto3.client(
             's3',
             aws_access_key_id=access_key_id,
-            aws_secret_access_key=secret_access_key
+            aws_secret_access_key=secret_access_key,
+            endpoint_url=endpoint_url
         )
         bucket = utils.get_config('BUCKET')
         return client, bucket
     else:
-        client = boto3.client('s3')
+        client = boto3.client('s3', endpoint_url=endpoint_url)
         bucket = utils.get_config('BUCKET')
         return client, bucket
 
