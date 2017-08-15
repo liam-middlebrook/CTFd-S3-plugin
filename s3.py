@@ -37,7 +37,7 @@ def load(app):
     def upload_file(file, chalid):
         s3, bucket = get_s3_conn(app)
 
-        filename = filter(clean_filename, secure_filename(file.filename).replace(' ', '_'))
+        filename = "".join([f for f in filter(clean_filename, secure_filename(file.filename).replace(' ', '_'))])
         if len(filename) <= 0:
             return False
 
